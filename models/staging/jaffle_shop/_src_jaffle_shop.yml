@@ -1,0 +1,33 @@
+sources:
+  - name: jaffle_shop
+    database: dbt-tutorial
+    schema: jaffle_shop
+    description: source for Jaffle Shop data
+    
+    tables:
+      - name: customers
+        description: customers data
+        columns:
+          - name: ID
+            description: ID for the customer (unique)
+
+          - name: FIRST_NAME
+            description: first name of the customer
+
+          - name: LAST_NAME
+            description: last name of the customer
+
+      - name: orders
+        description: orders data
+        columns:
+          - name: ID
+            description: ID for the order (unique)
+
+          - name: USER_ID
+            description: ID of the customer who placed the order
+
+          - name: ORDER_DATE
+            description: date when the order was placed
+
+          - name: STATUS
+            description: status of the order. Either placed, shipped, orcompleted
