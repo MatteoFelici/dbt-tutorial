@@ -1,0 +1,43 @@
+sources:
+  - name: jaffle_shop
+    database: dbt-tutorial
+    schema: jaffle_shop
+    description: source for Jaffle Shop data
+    config: 
+      freshness:
+        warn_after:
+          count: 12
+          period: hour
+        error_after:
+          count: 1
+          period: day
+      loaded_at_field: _etl_loaded_at
+    
+    tables:
+      - name: customers
+        description: customers data
+        freshness: null
+        columns:
+          - name: id
+            description: ID for the customer (unique)
+
+          - name: first_name
+            description: first name of the customer
+
+          - name: last_name
+            description: last name of the customer
+
+      - name: orders
+        description: orders data
+        columns:
+          - name: id
+            description: ID for the order (unique)
+
+          - name: user_id
+            description: ID of the customer who placed the order
+
+          - name: order_date
+            description: date when the order was placed
+
+          - name: status
+            description: status of the order. Either placed, shipped, orcompleted
