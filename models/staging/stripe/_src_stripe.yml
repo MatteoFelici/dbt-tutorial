@@ -1,0 +1,36 @@
+sources:
+  - name: stripe
+    database: dbt-tutorial
+    schema: stripe
+    description: source data for Stripe
+    config:
+      freshness:
+        warn_after:
+          count: 12
+          period: hour
+        error_after:
+          count: 1
+          period: day
+      loaded_at_field: _batched_at
+
+    tables:
+      - name: payment
+        description: payment data from Stripe
+        columns:
+          - name: id
+            description: payment ID (unique)
+
+          - name: orderid
+            description: ID of the order linked to the payment
+
+          - name: paymentmethod
+            description: payment method (credit_card, bank_transfer, etc.)
+
+          - name: status
+            description: status of the payment, either success or fail
+          
+          - name: amount
+            description: amount of the payment
+
+          - name: created
+            description: payment's date
