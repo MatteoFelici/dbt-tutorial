@@ -16,6 +16,9 @@ sources:
         columns:
           - name: id
             description: ID for the customer (unique)
+            data_tests:
+              - unique
+              - not_null
 
           - name: first_name
             description: first name of the customer
@@ -28,9 +31,14 @@ sources:
         columns:
           - name: id
             description: ID for the order (unique)
+            data_tests:
+              - unique
+              - not_null
 
           - name: user_id
             description: ID of the customer who placed the order
+            data_tests:
+              - not_null
 
           - name: order_date
             description: date when the order was placed

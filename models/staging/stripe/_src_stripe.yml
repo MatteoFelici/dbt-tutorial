@@ -19,9 +19,14 @@ sources:
         columns:
           - name: id
             description: payment ID (unique)
+            data_tests:
+              - unique
+              - not_null
 
           - name: orderid
             description: ID of the order linked to the payment
+            data_tests:
+              - not_null
 
           - name: paymentmethod
             description: payment method (credit_card, bank_transfer, etc.)
