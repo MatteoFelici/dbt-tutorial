@@ -2,7 +2,7 @@ sources:
   - name: jaffle_shop
     database: dbt-tutorial
     schema: jaffle_shop
-    description: source for Jaffle Shop data
+    description: Source for Jaffle Shop data
     config: 
       freshness:
         warn_after: {count: 12, period: hour}
@@ -11,11 +11,11 @@ sources:
     
     tables:
       - name: customers
-        description: customers data
+        description: Raw customers data
         freshness: null
         columns:
           - name: id
-            description: ID for the customer (unique)
+            description: Primary key for the customer
             data_tests:
               - unique
               - not_null
@@ -27,10 +27,10 @@ sources:
             description: last name of the customer
 
       - name: orders
-        description: orders data
+        description: Raw orders data
         columns:
           - name: id
-            description: ID for the order (unique)
+            description: Primary key for the order 
             data_tests:
               - unique
               - not_null
