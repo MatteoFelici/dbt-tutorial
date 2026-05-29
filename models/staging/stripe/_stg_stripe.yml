@@ -1,11 +1,14 @@
 models:
   - name: stg_stripe__payments
+    description: Staging table for Stripe payments
     columns:
       - name: payment_id
+        description: Primary key for payments table
         data_tests:
           - unique
           - not_null
       - name: order_id
+        description: ID of the order linked to the payment. Join with JS orders table
         data_tests:
           - not_null
           - relationships:
@@ -13,6 +16,7 @@ models:
                 to: ref('stg_jaffle_shop__orders')
                 field: order_id
       - name: payment_method
+        description: "{{ doc('payment_method') }}"
         data_tests:
           - accepted_values:
               arguments: 
@@ -22,6 +26,7 @@ models:
                   - credit_card
                   - gift_card
       - name: payment_status
+        description: Status of the payment. Either success or fail
         data_tests:
           - accepted_values:
               arguments: 
