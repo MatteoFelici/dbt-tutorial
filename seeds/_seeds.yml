@@ -5,6 +5,8 @@ seeds:
       - name: employee_id
         tests:
           - not_null
+      - name: email
+        description: email of the employee
       - name: customer_id
         description: every customer is linked to a single employee
         tests:
