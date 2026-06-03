@@ -1,0 +1,13 @@
+seeds:
+  - name: employees
+    description: CSV mapping for customer-employee
+    columns:
+      - name: employee_id
+        tests:
+          - not_null
+      - name: customer_id
+        description: every customer is linked to a single employee
+        tests:
+          - unique
+          - not_null
+          

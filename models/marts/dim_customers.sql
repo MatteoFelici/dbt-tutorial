@@ -10,6 +10,10 @@ with customers as (
 
 ),
 
+employees as (
+    select * from {{ ref('employees') }}
+),
+
 orders as (
 
     select
@@ -45,13 +49,16 @@ final as (
         o.first_order_date,
         o.most_recent_order_date,
         coalesce(o.number_of_orders, 0) as number_of_orders,
-        coalesce(v.lifetime_value, 0) as lifetime_value
+        coalesce(v.lifetime_value, 0) as lifetime_value,
+        e.employee_id
 
     from customers c
 
     left join orders o using (customer_id)
 
     left join ltv v using (customer_id)
+
+    left join employees e using (customer_id)
 
 )
 
