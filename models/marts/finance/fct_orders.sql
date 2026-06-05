@@ -1,7 +1,9 @@
 with orders as (
     select
         order_id,
-        customer_id
+        customer_id,
+        order_date,
+        order_status
     from {{ ref('stg_jaffle_shop__orders') }}
 ),
 payments as (
@@ -13,6 +15,8 @@ payments as (
 select
     order_id,
     o.customer_id,
+    o.order_date,
+    o.order_status,
     coalesce(p.amount, 0) AS amount
 from orders o
 left join payments p 
