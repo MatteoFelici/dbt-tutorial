@@ -1,0 +1,10 @@
+macros:
+  - name: cents_to_dollars
+    description: Macto to convert cents to dollars rounding to the inputed decimal place (default 2)
+    arguments:
+      - name: column_name
+        type: string
+        description: Name of the column (in cents) to convert
+      - name: decimals
+        type: integer
+        description: Number of decimal places to show (default 2)
